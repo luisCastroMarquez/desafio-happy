@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Form from "react-bootstrap/Form";
+import { Button } from "react-bootstrap";
 
 const Contacto = () => {
   const [email, setEmail] = useState("");
@@ -15,33 +17,36 @@ const Contacto = () => {
   };
 
   return (
-    <div>
-      <h2>Cuentanos, ¿en que te podemos ayudar?</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Correo</label>
-          <input
+    <>
+      <Form className="Formulario" onSubmit={handleSubmit}>
+        <p>Cuentanos, ¿en que te podemos ayudar?</p>
+        <Form.Group className="form-1">
+          <Form.Label>Correo:</Form.Label>
+          <Form.Control
             type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            placeholder="name@example.com"
           />
-        </div>
-        <div>
-          <label htmlFor="descripcion">Descripción</label>
-          <textarea
+        </Form.Group>
+        <Form.Group className="form-2">
+          <Form.Label>Descripción</Form.Label>
+          <Form.Control
+            as="textarea"
             id="descripcion"
             value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
             required
-          ></textarea>
-        </div>
-        <div>
-          <button type="submit">Enviar</button>
-        </div>
-      </form>
-    </div>
+            rows={8}
+          />
+        </Form.Group>
+      </Form>
+      <Button className="boton-1" type="submit">
+        Enviar
+      </Button>
+    </>
   );
 };
 
